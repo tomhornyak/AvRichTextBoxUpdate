@@ -21,14 +21,14 @@
 
 
 	<Border  BorderBrush="Gray" BorderThickness="1.5">
-	<DockPanel DataContext="{Binding FlowDoc}" >
+	<DockPanel DataContext="{ReflectionBinding  FlowDoc}" >
 		<DockPanel DockPanel.Dock="Top" Background="Coral">
 
 			<Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0.8">
 				<DockPanel>
 					<DockPanel DockPanel.Dock="Left">
-						<TextBlock DockPanel.Dock="Top" Background="LightGray" Text="{Binding Selection.Start, StringFormat='DocSelStart={0}'}"/>
-						<TextBlock Background="LightGray" Text="{Binding Selection.End, StringFormat='DocSelEnd={0}'}"/>
+						<TextBlock DockPanel.Dock="Top" Background="LightGray" Text="{ReflectionBinding  Selection.Start, StringFormat='DocSelStart={0}'}"/>
+						<TextBlock Background="LightGray" Text="{ReflectionBinding  Selection.End, StringFormat='DocSelEnd={0}'}"/>
 					</DockPanel>
 				</DockPanel>
 			</Border>
@@ -42,7 +42,7 @@
 			<TextBlock  Grid.Column="3" Text="Inl_Id" TextAlignment="Center" />
 		</Grid>
 
-		<ListBox x:Name="ParagraphsLB"  DockPanel.Dock="Top" ItemsSource="{Binding SelectionParagraphs}" Background="Wheat" BorderBrush="Black" BorderThickness="1" Padding="0" >
+		<ListBox x:Name="ParagraphsLB"  DockPanel.Dock="Top" ItemsSource="{ReflectionBinding  SelectionParagraphs}" Background="Wheat" BorderBrush="Black" BorderThickness="1" Padding="0" >
 			<ListBox.ItemTemplate>
 				<DataTemplate x:DataType="{x:Type local:Paragraph}">
 					<DockPanel>

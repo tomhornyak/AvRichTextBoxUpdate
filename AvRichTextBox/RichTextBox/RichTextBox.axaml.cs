@@ -67,6 +67,16 @@ public partial class RichTextBox : UserControl
 
    }
 
+   private void RichTextBox_GotFocus(object? sender, FocusChangedEventArgs e)
+   {
+      //Debug.WriteLine("Got focus rtb");
+   }
+
+   private void RichTextBox_LostFocus(object? sender, FocusChangedEventArgs e)
+   {
+      //Debug.WriteLine("Lost focus rtb");
+   }
+
    private void RichTextBox_Loaded(object? sender, RoutedEventArgs e)
    {
 
@@ -149,16 +159,6 @@ public partial class RichTextBox : UserControl
          }
 
       }
-   }
-
-   private void RichTextBox_GotFocus(object? sender, GotFocusEventArgs e)
-   {
-      //Debug.WriteLine("Got focus rtb");
-   }
-
-   private void RichTextBox_LostFocus(object? sender, RoutedEventArgs e)
-   {
-      //Debug.WriteLine("lost focus rtb");
    }
 
    internal void UpdateAllInlines()

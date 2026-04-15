@@ -86,13 +86,13 @@ public partial class MainWindow : Window
          
    }
 
-   private void FindTextBox_GotFocus(object? sender, Avalonia.Input.GotFocusEventArgs e)
+   private void FindTextBox_GotFocus(object? sender, Avalonia.Input.FocusChangedEventArgs e)
    {
       FindTB.Background = Brushes.White;
       this.FindTB.Focus();
    }
 
-   private void FindTextBox_LostFocus(object? sender, Avalonia.Input.GotFocusEventArgs e)
+   private void FindTextBox_LostFocus(object? sender, Avalonia.Input.FocusChangedEventArgs e)
    {
       FindTB.Background = Brushes.LightGray;
       
