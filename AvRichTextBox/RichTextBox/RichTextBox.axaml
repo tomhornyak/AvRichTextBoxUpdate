@@ -8,8 +8,7 @@
 			 xmlns:local="using:AvRichTextBox"
 			 x:Class="AvRichTextBox.RichTextBox"
 			 PointerReleased="RichTextBox_PointerReleased" PointerExited="RichTextBox_PointerExited" KeyDown="RichTextBox_KeyDown"  Focusable="True"
-			 BorderBrush="Black" BorderThickness="1" Padding="2"
-			 xmlns:vm="AvRichTextBox.RichTextViewModel">
+			 BorderBrush="Black" BorderThickness="1" Padding="2">
 
 	<UserControl.Styles>
 
@@ -24,44 +23,43 @@
 		</Style>
 
 		<Style Selector="local|EditableTable > ContentPresenter">
-			<Setter Property="Grid.Row" Value="{ReflectionBinding  RowNo}" />
-			<Setter Property="Grid.Column" Value="{ReflectionBinding  ColNo}" />
-			<Setter Property="Grid.ColumnSpan" Value="{ReflectionBinding  ColSpan}" />
-			<Setter Property="Grid.RowSpan" Value="{ReflectionBinding  RowSpan}" />
+			<Setter Property="Grid.Row" Value="{Binding  RowNo}" />
+			<Setter Property="Grid.Column" Value="{Binding  ColNo}" />
+			<Setter Property="Grid.ColumnSpan" Value="{Binding  ColSpan}" />
+			<Setter Property="Grid.RowSpan" Value="{Binding  RowSpan}" />
 		</Style>
 
 		<Style Selector="local|EditableParagraph.paragraphBindings">
 			<Setter Property="TextWrapping" Value="Wrap"/>
 			<Setter Property="Margin" Value="5"/>
 			<!--LineHeight="{Binding LineHeight}"-->
-			<Setter Property="LineSpacing" Value="{ReflectionBinding  LineSpacing}"/>
-			<Setter Property="FontFamily" Value="{ReflectionBinding  FontFamily}"/>
-			<Setter Property="FontWeight" Value="{ReflectionBinding  FontWeight}"/>
-			<Setter Property="FontSize" Value="{ReflectionBinding  FontSize}"/>
-			<Setter Property="Background" Value="{ReflectionBinding  Background}"/>
-			<Setter Property="TextAlignment" Value="{ReflectionBinding  TextAlignment}"/>
-			<Setter Property="SelectionBrush" Value="{ReflectionBinding  SelectionBrush}"/>
-			<Setter Property="VerticalAlignment" Value="{ReflectionBinding  VerticalAlignment}"/>
+			<Setter Property="LineSpacing" Value="{Binding  LineSpacing}"/>
+			<Setter Property="FontFamily" Value="{Binding  FontFamily}"/>
+			<Setter Property="FontWeight" Value="{Binding  FontWeight}"/>
+			<Setter Property="FontSize" Value="{Binding  FontSize}"/>
+			<Setter Property="Background" Value="{Binding  Background}"/>
+			<Setter Property="TextAlignment" Value="{Binding  TextAlignment}"/>
+			<Setter Property="SelectionBrush" Value="{Binding  SelectionBrush}"/>
+			<Setter Property="VerticalAlignment" Value="{Binding  VerticalAlignment}"/>
 
-			<Setter Property="SelectionStart" Value="{ReflectionBinding  SelectionStartInBlock, Mode=TwoWay}"/>
-			<Setter Property="SelectionEnd" Value="{ReflectionBinding  SelectionEndInBlock, Mode=TwoWay}"/>
+			<Setter Property="SelectionStart" Value="{Binding  SelectionStartInBlock, Mode=TwoWay}"/>
+			<Setter Property="SelectionEnd" Value="{Binding  SelectionEndInBlock, Mode=TwoWay}"/>
 		</Style>
 
 	</UserControl.Styles>
 
 
-	<DockPanel x:Name="MainDP" MinWidth="{ReflectionBinding  MinWidth}">
+	<DockPanel x:Name="MainDP" MinWidth="{Binding  MinWidth}">
 		<!--this binds to viewmodel-->
 
-		ReflectionBinding
-		<ScrollViewer x:Name="FlowDocSV"  HorizontalScrollBarVisibility="Disabled" Margin="0" Padding="0" Offset="{ReflectionBinding  RTBScrollOffset, Mode=OneWay}"  ScrollChanged="ScrollViewer_ScrollChanged"
+		<ScrollViewer x:Name="FlowDocSV"  HorizontalScrollBarVisibility="Disabled" Margin="0" Padding="0" Offset="{Binding  RTBScrollOffset, Mode=OneWay}"  ScrollChanged="ScrollViewer_ScrollChanged"
 					  PointerPressed="FlowDocSV_PointerPressed" PointerMoved="FlowDocSV_PointerMoved" PointerReleased="FlowDocSV_PointerReleased" >
 
 			<Grid VerticalAlignment="Top">
 
 				<!-- The FlowDocument itself -->
-				<ItemsControl x:Name="DocIC" DataContext="{ReflectionBinding  FlowDoc}" VerticalAlignment="Top"
-							  ItemsSource="{ReflectionBinding  Blocks}" Margin="0" Padding="{ReflectionBinding  PagePadding}" >
+				<ItemsControl x:Name="DocIC" DataContext="{Binding  FlowDoc}" VerticalAlignment="Top"
+							  ItemsSource="{Binding  Blocks}" Margin="0" Padding="{Binding  PagePadding}" >
 
 					<ItemsControl.ItemsPanel>
 						<ItemsPanelTemplate>

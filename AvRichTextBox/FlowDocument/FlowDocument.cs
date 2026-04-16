@@ -34,13 +34,7 @@ public partial class FlowDocument : AvaloniaObject
    public void ScrollFlowDocInDirection(int direction) { ScrollInDirection?.Invoke(direction); }
 
    public List<Paragraph> GetSelectedParagraphs => [.. AllParagraphs.Where(p=> p.StartInDoc <= Selection.Start && p.EndInDoc >= Selection.End).Select(b=>(Paragraph)b)];
-
-   public static readonly StyledProperty<ObservableCollection<Block>> BlocksProperty = AvaloniaProperty.Register<FlowDocument, ObservableCollection<Block>>(nameof(Blocks), [], defaultBindingMode: BindingMode.TwoWay);
-   public ObservableCollection<Block> Blocks
-   {
-      get => GetValue(BlocksProperty);
-      set { SetValue(BlocksProperty, value); }
-   }
+   public ObservableCollection<Block> Blocks { get; set; } = new ObservableCollection<Block>();
 
    public static readonly DirectProperty<FlowDocument, Thickness> PagePaddingProperty = AvaloniaProperty.RegisterDirect<FlowDocument, Thickness>(nameof(PagePadding), o => o.PagePadding, (o, v) => o.PagePadding = v);
    public Thickness PagePadding
@@ -65,21 +59,10 @@ public partial class FlowDocument : AvaloniaObject
 
       DefineFormatRunActions();
 
-      this.PropertyChanged += FlowDocument_PropertyChanged;
-
       InlineIdCounter = 0; //reset on new flowdoc
 
       Blocks.CollectionChanged += Blocks_CollectionChanged;
 
-   }
-
-   private void FlowDocument_PropertyChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
-   {
-      if (e.Property == BlocksProperty)
-      {
-         Blocks.CollectionChanged -= Blocks_CollectionChanged;
-         Blocks.CollectionChanged += Blocks_CollectionChanged;
-      }
    }
 
    private void Blocks_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)

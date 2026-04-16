@@ -40,11 +40,11 @@ internal partial class EditableParagraph : SelectableTextBlock
       if (Inlines?.Count == 0)
          thisPar.Inlines.Add(new EditableRun(""));
 
-      List<int> lineBreakIndexes = Inlines.OfType<EditableLineBreak>().ToList().ConvertAll(elb => Inlines.IndexOf(elb));
+      List<int> lineBreakIndexes = Inlines!.OfType<EditableLineBreak>().ToList().ConvertAll(elb => Inlines!.IndexOf(elb));
       for (int idx = lineBreakIndexes.Count - 1; idx >= 0; idx--)
       {
          int elbIdx = lineBreakIndexes[idx];
-         if (elbIdx == 0 || (Inlines[elbIdx - 1] is EditableRun erun && erun.Text != ""))
+         if (elbIdx == 0 || (Inlines![elbIdx - 1] is EditableRun erun && erun.Text != ""))
             thisPar.Inlines.Insert(elbIdx + 1, new EditableRun(""));
       }
       thisPar.UpdateEditableRunPositions();

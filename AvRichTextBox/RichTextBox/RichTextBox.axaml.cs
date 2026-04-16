@@ -34,7 +34,6 @@ public partial class RichTextBox : UserControl
 
       this.PropertyChanged += RichTextBox_PropertyChanged;
       this.Loaded += RichTextBox_Loaded;
-      this.Initialized += RichTextBox_Initialized;
       this.TextInput += RichTextBox_TextInput;
       this.GotFocus += RichTextBox_GotFocus;
       this.LostFocus += RichTextBox_LostFocus;
@@ -59,11 +58,6 @@ public partial class RichTextBox : UserControl
       SuperscriptTG.Children = [new TranslateTransform(0, -4.8), strans];
 
       this.Focusable = true;
-
-   }
-
-   private void RichTextBox_Initialized(object? sender, EventArgs e)
-   {
 
    }
 
@@ -105,8 +99,6 @@ public partial class RichTextBox : UserControl
 #endif
 
       this.Focus();
-
-
    }
 
 

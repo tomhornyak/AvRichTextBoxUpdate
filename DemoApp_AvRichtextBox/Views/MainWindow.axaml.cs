@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Media;
 using AvRichTextBox;
 using System;
@@ -31,15 +32,19 @@ public partial class MainWindow : Window
       InitializeComponent();
 
       Loaded += MainWindow_Loaded;
-    
+      MainRTB.Loaded += MainRTB_Loaded;
+
       FontsCB.ItemsSource = GetAllFonts;
 
    }
 
-   private void MainWindow_Loaded(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+   private void MainRTB_Loaded(object? sender, RoutedEventArgs e)
    {
       MainRTB.FlowDocument.Selection_Changed += FlowDocument_Selection_Changed;
+   }
 
+   private void MainWindow_Loaded(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+   {
 #if DEBUG
       
       DockPanel debugCBPanel = new () { VerticalAlignment = Avalonia.Layout.VerticalAlignment.Bottom };

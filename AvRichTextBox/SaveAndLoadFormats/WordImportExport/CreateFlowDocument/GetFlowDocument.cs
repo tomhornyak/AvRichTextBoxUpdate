@@ -1,8 +1,8 @@
 ﻿using Avalonia.Media;
-using DocumentFormat.OpenXml;
-using DocumentFormat.OpenXml.Packaging;
 using System.Diagnostics;
 using System.Linq;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
 using static AvRichTextBox.HelperMethods;
 
 namespace AvRichTextBox;
@@ -59,7 +59,7 @@ internal static partial class WordConversions
 
          fdoc.PagePadding = new Thickness(50); //set a small default padding
 
-         DocumentFormat.OpenXml.Wordprocessing.PageMargin pMarg = mainDocPart.Document.Descendants<DocumentFormat.OpenXml.Wordprocessing.PageMargin>().FirstOrDefault() is DocumentFormat.OpenXml.Wordprocessing.PageMargin pmargin ? pmargin : null!;
+         DocumentFormat.OpenXml.Wordprocessing.PageMargin pMarg = mainDocPart.Document!.Descendants<DocumentFormat.OpenXml.Wordprocessing.PageMargin>().FirstOrDefault() is DocumentFormat.OpenXml.Wordprocessing.PageMargin pmargin ? pmargin : null!;
          if ( pMarg != null ) 
          {
             double docmargT = TwipToPix(Convert.ToDouble((int)pMarg.Top!));

@@ -185,16 +185,9 @@
 
 		</DockPanel>
 
-		<Grid>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="50*"/>
-				<RowDefinition Height="50*"/>
-			</Grid.RowDefinitions>
 		<avrtb:RichTextBox x:Name="MainRTB" Grid.Row="0" IsReadOnly="False" LineBreakOnShiftEnter="True" ShowDebuggerPanelInDebugMode="false"  DisableUserCopy="False" SelectionBrush="LightBlue" />
 
 		<!--RTB with direct content -->
-		<avrtb:RichTextBox x:Name="MainRTB2" Grid.Row="1" IsReadOnly="False" LineBreakOnShiftEnter="True" ShowDebuggerPanelInDebugMode="false" DisableUserCopy="False"  />
-		</Grid>
 		<!--	<avrtb:RichTextBox.FlowDocument>
 				<avrtb:FlowDocument >
 					<avrtb:FlowDocument.Blocks>

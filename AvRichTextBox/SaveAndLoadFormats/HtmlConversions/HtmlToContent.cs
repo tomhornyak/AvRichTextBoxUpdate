@@ -71,10 +71,6 @@ internal static partial class HtmlConversions
 
 
       double tableWidthPix = 100;
-      double margL = 0;
-      double margR = 0;
-      double marg = 0;
-
 
       Dictionary<string, string> parsedTableStyles = ParseStyleAttribute(tableNode.GetAttributeValue("style", ""));
 

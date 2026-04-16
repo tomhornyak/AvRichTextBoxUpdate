@@ -71,7 +71,7 @@ public partial class RichTextBox
       var formats = await TopLevel.GetTopLevel(this)!.Clipboard!.GetDataFormatsAsync();
       foreach (var format in formats)
       {
-         if (format == DataFormat.CreateBytesApplicationFormat("Rich Text Format"))
+         if (format == rtbFormat)
          {
             var rtfobj = await TopLevel.GetTopLevel(this)!.Clipboard!.TryGetDataAsync();
             if (rtfobj != null)
@@ -95,12 +95,20 @@ public partial class RichTextBox
             }
             else if (format == DataFormat.Text)
             {
-               var pasteText = await TopLevel.GetTopLevel(this).Clipboard.TryGetTextAsync();
-               if (pasteText is not null)
+               var topLevel = TopLevel.GetTopLevel(this);
+               if (topLevel != null)
                {
-                  FlowDoc.SetRangeToText(FlowDoc.Selection, pasteText);
-                  newSelPoint = Math.Min(newSelPoint + pasteText.Length, FlowDoc.DocEndPoint - 1);
-                  TextPasted = true;
+                  var clipBoard = topLevel.Clipboard;
+                  if (clipBoard != null)
+                  {
+                     var pasteText = await clipBoard.TryGetTextAsync();
+                     if (pasteText is not null)
+                     {
+                        FlowDoc.SetRangeToText(FlowDoc.Selection, pasteText);
+                        newSelPoint = Math.Min(newSelPoint + pasteText.Length, FlowDoc.DocEndPoint - 1);
+                        TextPasted = true;
+                     }
+                  }
                }
             }
             else
